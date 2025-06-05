@@ -7,22 +7,16 @@
 </head>
 <body>
     <script>
-        /*
-        score counter func
-
-        play game func with for loop that calls play round 5 times (let i=1, i <= 5, i++)
-        */
-
         let choices = ["rock", "paper", "scissors"]
 
-        let random = () => Math.floor(Math.random() * 3);
+        let random = () => Math.floor(Math.random() * 3); //random number from 0-2
 
-        let getComputerChoice = () => {
+        let getComputerChoice = () => { //get a random choice (from the array)
             num = random();
             return choices[num];
         };
 
-        let getHumanChoice = () => {
+        let getHumanChoice = () => { //get player's choice via prompt
             input = prompt("rock, paper, scissors, shoot!!", "rock");
             return input.toLowerCase();
         };
@@ -34,13 +28,13 @@
             if (c == h) {
                 console.log("it's a tie!")
 
-            } else if (c == "rock" && h == "paper" ||
+            } else if (c == "rock" && h == "paper" || //cases in which player wins
                 c == "paper" && h == "scissors" ||
                 c == "scissors" && h == "rock") {
                     console.log("colgates, you won!");
                     ++humanScore;
 
-            } else {
+            } else { //cases in which computer wins (aka the rest)
                     console.log("you lost, sucker!");
                     ++computerScore;
             }
@@ -50,7 +44,7 @@
         let humanScore = 0;
 
         let playGame = () => {
-            for (let rounds=1; rounds<=5; rounds++) {
+            for (let rounds=1; rounds<=5; rounds++) { //5 rounds
                 playRound(getComputerChoice(), getHumanChoice());
             }
             console.log("computer score: ", computerScore);
@@ -63,11 +57,7 @@
                 console.log("it's a tie!")
             }
         };
-
         playGame();
-
-        //console.log(playRound(getComputerChoice(), getHumanChoice()))
-        
     </script>
 </body>
 </html>
