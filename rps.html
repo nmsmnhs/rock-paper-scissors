@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        score counter func
+
+        play game func with for loop that calls play round 5 times (let i=1, i <= 5, i++)
+        */
+
+        let choices = ["rock", "paper", "scissors"]
+
+        let random = () => Math.floor(Math.random() * 3);
+
+        let getComputerChoice = () => {
+            num = random();
+            return choices[num];
+        };
+
+        let getHumanChoice = () => {
+            input = prompt("rock, paper, scissors, shoot!!", "rock");
+            return input.toLowerCase();
+        };
+
+        let playRound = (c, h) => {
+            console.log("the computer played", c);
+            console.log("you played", h);
+
+            if (c == h) {
+                console.log("it's a tie!")
+
+            } else if (c == "rock" && h == "paper" ||
+                c == "paper" && h == "scissors" ||
+                c == "scissors" && h == "rock") {
+                    console.log("colgates, you won!");
+                    ++humanScore;
+
+            } else {
+                    console.log("you lost, sucker!");
+                    ++computerScore;
+            }
+        };
+    
+        let computerScore = 0;
+        let humanScore = 0;
+
+        let playGame = () => {
+            for (let rounds=1; rounds<=5; rounds++) {
+                playRound(getComputerChoice(), getHumanChoice());
+            }
+            console.log("computer score: ", computerScore);
+            console.log("your score: ", humanScore);
+            if (computerScore > humanScore) {
+                console.log("computer won!")
+            } else if (computerScore < humanScore) {
+                console.log("human won!")
+            } else {
+                console.log("it's a tie!")
+            }
+        };
+
+        playGame();
+
+        //console.log(playRound(getComputerChoice(), getHumanChoice()))
+        
+    </script>
+</body>
+</html>
